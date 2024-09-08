@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-12, macos-13, macos-14]
+        xcode: ['14.2', '15.2', '16_beta_6']
+    runs-on: ${{ matrix.os }}
+    env:
+      XC_VERSION: ${{ matrix.xcode }}
+
+    steps:
+    - name: Select latest Xcode
+      run: "sudo xcode-select -s /Applications/Xcode_$XC_VERSION.app"
+    - uses: actions/checkout@v4
+    - name: Build
+      run: "clang++ ./cmp.m -o cmp -ObjC -framework Foundation && ./cmp"
