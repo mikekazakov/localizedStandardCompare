@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-12, macos-13, macos-14]
+        xcode: []
         include:
           - os: macos-12
             xcode: '14.2'
