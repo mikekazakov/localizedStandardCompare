@@ -24,7 +24,7 @@ jobs:
             xcode: '14.3.1'
         exclude:
           - os: macos-14
-            xcode: '15.2'
+            xcode: '14.2'
     runs-on: ${{ matrix.os }}
     env:
       XC_VERSION: ${{ matrix.xcode }}
